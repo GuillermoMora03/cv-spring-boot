@@ -15,6 +15,7 @@
           <a th:href="@{'/skills/id/'+ ${stat.index}}">Ver detalle</a>
       </li>
     </ul>
+    <p th:if="${filterMessage}" th:text="${filterMessage}"></p>
 
     <form action="/skills" method="get">
         <label th:for="nombre">Buscar</label>
