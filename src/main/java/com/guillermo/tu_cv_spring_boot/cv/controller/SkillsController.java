@@ -32,7 +32,7 @@ public class SkillsController {
         return "skills";
     }
 
-    @GetMapping("/{index}")
+    @GetMapping("/id/{index}")
     public String showSkillDetail(@PathVariable int index, Model model){
         if(index >= 0 && index < skills.size()){
             Skill skill = skills.get(index);
@@ -43,7 +43,7 @@ public class SkillsController {
         return "redirect:/skills";
     }
 
-    @GetMapping("/{name}/{level}")
+    @GetMapping("/filter/{name}/{level}")
     public String showFilteredSkill(@PathVariable String name, @PathVariable String level, Model model){
         List<Skill> skillsFilter = skills.stream()
                 .filter(skill -> skill.getName().equalsIgnoreCase(name)
@@ -51,6 +51,18 @@ public class SkillsController {
                 .toList();
         model.addAttribute("skills", skillsFilter);
         model.addAttribute("filterMessage", "Filtro: " + name + " - " + level);
+        return "skills";
+    }
+
+    @GetMapping("/name/{name}")
+    public String showFilteredSkill(@PathVariable String name, Model model){
+
+        List<Skill> skillsFilter = skills.stream()
+                .filter(skill -> skill.getName().equalsIgnoreCase(name))
+                .toList();
+
+        model.addAttribute("skills", skillsFilter);
+        model.addAttribute("filterMessage", "Filtro: " + name);
         return "skills";
     }
 
