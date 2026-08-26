@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Nuestras Habilidades</h1>
+    <p th:if="${skills.isEmpty()}" >No hay datos</p>
+    <ul th:if="${!skills.isEmpty()}" >
+      <li th:each="skill : ${skills}" th:text="${skill}">Skill</li>
+    </ul>
+</body>
+</html>
