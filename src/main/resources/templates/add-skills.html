@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Agregar Nueva Habilidad</h1>
+    <form th:action="@{/skills/add}" th:object="${skill}" method="post">
+        <label th:for="nombre">Nombre</label>
+        <input type="text"  th:field="*{name}">
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
